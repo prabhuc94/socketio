@@ -3,14 +3,15 @@ var app = express();
 app.use(express.static('public')); 
 var http = require('http').Server(app);
 var port = process.env.PORT || 3001;
-var socketIo = require('socket.io');
+// var socketIo = require('socket.io');
 // setup my socket server
-var io = socketIo(http, {
-    cors: {
-      origin: "*", // Adjust according to your needs
-      methods: ["GET", "POST"]
-    }
-  });
+var io = require('socket.io')(http);
+// var io = socketIo(http, {
+//     cors: {
+//       origin: "*", // Adjust according to your needs
+//       methods: ["GET", "POST"]
+//     }
+//   });
  
 io.on('connection', function(socket) {
 
